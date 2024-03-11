@@ -1,33 +1,10 @@
-pipeline {
-  agent any
-  stages {
-          stage('Clone repository') {
-            steps {
-              checkout([$class: 'GitSCM',
-              branches: [[name:*/main']],
-              userRemoteConfigs: [[url: 'https://github.com/sinchhh/PES2UG21CS526_Jenkins.git' ]]])
-            }
-          }
-    stage('Build') {
-      steps {
-        build 'PES2UG21CS526-1"
-        sh 'g++ main.cpp -o output'
-      }
-    }
-    stage('Test') {
-      steps {
-        sh './output'
-      }
-    }
-    stage( 'Deploy) {
-      steps {
-        echo 'deploy'
-      }
-    }
-  }
-  post{
-    failure{
-      error 'Pipeline failed'
-    }
-  }
+#include <iostream>
+using namespace std;
+
+int main(void) {
+  cout << "Hello, World\n";
+  cout << "Hello, Jenkins\n";
+  cout << "Webhook successfully enabled\n";
+  cout << "I have added the main.cpp\n";
+  return 0;
 }
